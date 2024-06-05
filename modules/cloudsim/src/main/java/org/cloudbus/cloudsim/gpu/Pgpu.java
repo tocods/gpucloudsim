@@ -3,6 +3,7 @@
  */
 package org.cloudbus.cloudsim.gpu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.cloudbus.cloudsim.Pe;
@@ -19,25 +20,32 @@ import org.cloudbus.cloudsim.gpu.provisioners.GpuGddramProvisioner;
 public class Pgpu {
 
 	/**
-	 * Pgpu Id
+	 * Pgpu的Id
 	 */
 	private int id;
 	
 	/**
-	 * Type of the Pgpu
+	 * Pgpu的类型
 	 */
 	private String type;
 
 	/**
-	 * List of Pgpu's PEs
+	 * Pgpu的PE列表
 	 */
 	private List<Pe> peList;
+	private List<Double> mips;
+
 	/**
-	 * GPU's GDDRAM provisioner
+	 * 任务调度器负责调度Pgpu上的任务 {@link GpuTask GpuTasks}.
+	 */
+	private GpuTaskScheduler gpuTaskScheduler;
+
+	/**
+	 * GPU'的GDDRAM负责人
 	 */
 	private GpuGddramProvisioner gddramProvisioner;
 	/**
-	 * GPU's GDDRAM bandwidth provisioner
+	 * GPU的GDDRAM带宽负责人
 	 */
 	private GpuBwProvisioner bwProvisioner;
 
@@ -54,6 +62,34 @@ public class Pgpu {
 		setPeList(pes);
 		setGddramProvisioner(gddramProvisioner);
 		setBwProvisioner(bwProvisioner);
+		initialMips();
+	}
+
+	private void initialMips() {
+		mips = new ArrayList<>();
+		for (Pe pe : peList) {
+			mips.add((double) pe.getMips());
+		}
+	}
+
+	/**
+	 * 在GPU上设置任务的调度器
+	 * @param gpuTaskScheduler 要设置的GPU任务调度器
+	 */
+	public void setGpuTaskScheduler(GpuTaskScheduler gpuTaskScheduler) {
+		this.gpuTaskScheduler = gpuTaskScheduler;
+	}
+
+	/**
+	 * 获取GPU上的任务调度器
+	 * @return GPU上的任务调度器
+	 */
+	public GpuTaskScheduler getGpuTaskScheduler() {
+		return gpuTaskScheduler;
+	}
+
+	public double updateGpuTaskProcessing(double currentTime) {
+		return getGpuTaskScheduler().updateGpuTaskProcessing(currentTime, mips);
 	}
 
 	public int getId() {

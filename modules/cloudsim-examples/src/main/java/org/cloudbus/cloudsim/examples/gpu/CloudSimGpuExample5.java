@@ -393,7 +393,7 @@ public class CloudSimGpuExample5 {
 	/**
 	 * Prints the GpuCloudlet objects.
 	 * 
-	 * @param list list of GpuCloudlets
+	 * @param gpuCloudlets list of GpuCloudlets
 	 */
 	private static void printCloudletList(List<Cloudlet> gpuCloudlets) {
 		Log.printLine(String.join("", Collections.nCopies(100, "-")));

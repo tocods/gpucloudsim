@@ -2,6 +2,8 @@ package org.cloudbus.cloudsim.gpu;
 
 import org.cloudbus.cloudsim.gpu.provisioners.VideoCardBwProvisioner;
 
+import java.util.List;
+
 /**
  * Represents a physical video card attached to a host
  * 
@@ -74,10 +76,14 @@ public class VideoCard {
 	}
 
 	/**
-	 * @param pcieBandwidth the pcieBandwidth to set
+	 * @param pcieBandwidthProvisioner the pcieBandwidth to set
 	 */
 	protected void setPCIeBandwidthProvisioner(VideoCardBwProvisioner pcieBandwidthProvisioner) {
 		this.pcieBandwidthProvisioner = pcieBandwidthProvisioner;
+	}
+
+	public List<Pgpu> getPgpuList() {
+		return getVgpuScheduler().getPgpuList();
 	}
 
 }

@@ -52,7 +52,7 @@ public class GpuCloudlet extends Cloudlet {
 	 * Create a GpuCloudlet. {@link Cloudlet} represents the host portion of the
 	 * application while {@link GpuTask} represents the device portion.
 	 * 
-	 * @param gpuCloudletId       gpuCloudlet id
+	 * @param cloudletId       gpuCloudlet id
 	 * @param cloudletLength      length of the host portion
 	 * @param pesNumber           number of threads
 	 * @param cloudletFileSize    size of the application
@@ -76,7 +76,7 @@ public class GpuCloudlet extends Cloudlet {
 	 * Create a GpuCloudlet. {@link Cloudlet} represents the host portion of the
 	 * application while {@link GpuTask} represents the device portion.
 	 * 
-	 * @param gpuCloudletId       gpuCloudlet id
+	 * @param cloudletId       gpuCloudlet id
 	 * @param cloudletLength      length of the host portion
 	 * @param pesNumber           number of threads
 	 * @param cloudletFileSize    size of the application
@@ -99,7 +99,7 @@ public class GpuCloudlet extends Cloudlet {
 	 * Create a GpuCloudlet. {@link Cloudlet} represents the host portion of the
 	 * application while {@link GpuTask} represents the device portion.
 	 * 
-	 * @param gpuCloudletId       gpuCloudlet id
+	 * @param cloudletId       gpuCloudlet id
 	 * @param cloudletLength      length of the host portion
 	 * @param pesNumber           number of threads
 	 * @param cloudletFileSize    size of the application
@@ -122,7 +122,7 @@ public class GpuCloudlet extends Cloudlet {
 	 * Create a GpuCloudlet. {@link Cloudlet} represents the host portion of the
 	 * application.
 	 * 
-	 * @param gpuCloudletId       gpuCloudlet id
+	 * @param cloudletId       gpuCloudlet id
 	 * @param cloudletLength      length of the host portion
 	 * @param pesNumber           number of threads
 	 * @param cloudletFileSize    size of the application

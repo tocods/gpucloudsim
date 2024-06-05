@@ -340,8 +340,7 @@ public class Vgpu {
 
 	/**
 	 * Sets the video card that runs this virtual gpu.
-	 * 
-	 * @param videoCard video card running the virtual gpu
+	 *
 	 * @pre vm != $null
 	 * @post $none
 	 */
@@ -409,7 +408,7 @@ public class Vgpu {
 	/**
 	 * Sets the current allocated gddram.
 	 * 
-	 * @param currentAllocatedRam the new current allocated gddram
+	 * @param currentAllocatedGDDRam the new current allocated gddram
 	 */
 	public void setCurrentAllocatedGddram(int currentAllocatedGDDRam) {
 		this.currentAllocatedGDDRam = currentAllocatedGDDRam;

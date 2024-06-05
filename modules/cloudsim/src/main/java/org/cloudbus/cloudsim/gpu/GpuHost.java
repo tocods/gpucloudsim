@@ -58,6 +58,28 @@ public class GpuHost extends Host {
 		setVideoCardAllocationPolicy(null);
 	}
 
+	/**
+	 * 遍历每张显卡上的每个 pGPU，调用 pGPU 上的任务调度器更新任务
+	 * @param currentTime
+	 * @return
+	 */
+	public double updatePgpuProcessing(double currentTime) {
+		double smallerTime = Double.MAX_VALUE;
+		if (isGpuEquipped()) {
+			// 调用 pGPU 上的任务调度器更新任务
+			for (VideoCard videoCard : getVideoCardAllocationPolicy().getVideoCards()) {
+				// 遍历每张显卡上的每个 pGPU
+				for(Pgpu pgpu : videoCard.getVgpuScheduler().getPgpuList()) {
+					double time = pgpu.updateGpuTaskProcessing(currentTime);
+					if (time > 0.0 && time < smallerTime) {
+						smallerTime = time;
+					}
+				}
+			}
+		}
+		return smallerTime;
+	}
+
 	public double updateVgpusProcessing(double currentTime) {
 		double smallerTime = Double.MAX_VALUE;
 		if (isGpuEquipped()) {

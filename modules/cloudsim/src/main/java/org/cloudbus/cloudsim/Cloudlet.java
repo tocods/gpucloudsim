@@ -762,8 +762,6 @@ public class Cloudlet {
      * cancel or to move this Cloudlet into different CloudResources.
      *
      * @param length length of this Cloudlet
-     * @see gridsim.AllocPolicy
-     * @see gridsim.ResCloudlet
      * @pre length >= 0.0
      * @post $none
      */

@@ -42,7 +42,7 @@ public abstract class VideoCardAllocationPolicy {
 	/**
 	 * Allocate pGPU and PCIe bandwidth to the vgpu
 	 * 
-	 * @param videoCardId id of the video card to allocate on
+	 * @param videoCard id of the video card to allocate on
 	 * @param vgpu        the vgpu
 	 * @param PCIeBw      amount of requested PCIe bandwidth
 	 * @return $true is the request is accepted; $false otherwise.
@@ -64,7 +64,7 @@ public abstract class VideoCardAllocationPolicy {
 	/**
 	 * Allocate pgpu to the vgpu
 	 * 
-	 * @param pgpuId      id of the pgpu on the video card to allocate on
+	 * @param pgpu      id of the pgpu on the video card to allocate on
 	 * @param vgpu        the vgpu
 	 * @param PCIeBw      amount of requested PCIe bandwidth
 	 * @return $true is the request is accepted; $false otherwise.

@@ -32,7 +32,7 @@ public class VgpuSchedulerFairShare extends VgpuSchedulerTimeShared {
 	/**
 	 * Instantiates a new fair-share vgpu scheduler.
 	 * 
-	 * @param pgpulist the list of gpu PEs of the video card where the VgpuScheduler
+	 * @param pgpuList the list of gpu PEs of the video card where the VgpuScheduler
 	 *                 is associated to.
 	 */
 	public VgpuSchedulerFairShare(String videoCardType, List<Pgpu> pgpuList, PgpuSelectionPolicy pgpuSelectionPolicy) {

@@ -18,7 +18,7 @@ public class VgpuSchedulerTimeShared extends VgpuScheduler {
 	/**
 	 * Instantiates a new vgpu time-shared scheduler.
 	 * 
-	 * @param pgpulist the list of pgpus of the video card where the VgpuScheduler
+	 * @param pgpuList the list of pgpus of the video card where the VgpuScheduler
 	 *                 is associated to.
 	 */
 	public VgpuSchedulerTimeShared(String videoCardType, List<Pgpu> pgpuList, PgpuSelectionPolicy pgpuSelectionPolicy) {
