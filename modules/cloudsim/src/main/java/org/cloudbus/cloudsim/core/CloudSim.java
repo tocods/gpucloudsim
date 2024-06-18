@@ -514,22 +514,21 @@ public class CloudSim {
 	public static boolean runClockTick() {
 		SimEntity ent;
 		boolean queue_empty;
-		
 		int entities_size = entities.size();
-
 		for (int i = 0; i < entities_size; i++) {
 			ent = entities.get(i);
 			if (ent.getState() == SimEntity.RUNNABLE) {
 				ent.run();
 			}
 		}
-				
+		Log.printLine(future.size());
 		// If there are more future events then deal with them
 		if (future.size() > 0) {
 			List<SimEvent> toRemove = new ArrayList<SimEvent>();
 			Iterator<SimEvent> fit = future.iterator();
 			queue_empty = false;
 			SimEvent first = fit.next();
+			Log.printLine(first.getTag());
 			processEvent(first);
 			future.remove(first);
 

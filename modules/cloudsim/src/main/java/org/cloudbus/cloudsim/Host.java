@@ -14,6 +14,7 @@ import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.lists.PeList;
 import org.cloudbus.cloudsim.provisioners.BwProvisioner;
 import org.cloudbus.cloudsim.provisioners.RamProvisioner;
+import workflow.GpuJob;
 
 /**
  * A Host is a Physical Machine (PM) inside a Datacenter. It is also called as a Server.
@@ -42,6 +43,8 @@ public class Host {
 	/** The allocation policy for scheduling VM execution. */
 	private VmScheduler vmScheduler;
 
+	private CloudletScheduler cloudletScheduler;
+
 	/** The list of VMs assigned to the host. */
 	private final List<? extends Vm> vmList = new ArrayList<Vm>();
 
@@ -55,6 +58,7 @@ public class Host {
 	/** The VMs migrating in. */
 	private final List<Vm> vmsMigratingIn = new ArrayList<Vm>();
 
+	private List<Double> mips;
 	/** The datacenter where the host is placed. */
 	private Datacenter datacenter;
 
@@ -80,10 +84,34 @@ public class Host {
 		setBwProvisioner(bwProvisioner);
 		setStorage(storage);
 		setVmScheduler(vmScheduler);
-
+		setCloudletScheduler(null);
 		setPeList(peList);
 		setFailed(false);
 	}
+
+	public void setCloudletScheduler(CloudletScheduler cloudletScheduler) {
+		this.cloudletScheduler = cloudletScheduler;
+	}
+
+	public CloudletScheduler getCloudletScheduler() {
+		return cloudletScheduler;
+	}
+	public double submitJob(GpuJob job) {
+		return cloudletScheduler.cloudletSubmit(job);
+	}
+
+	public double updateJobsProcessing(double currentTime) {
+		return cloudletScheduler.updateVmProcessing(currentTime, mips);
+	}
+
+	public boolean isFinishedCloudlets(){
+		return cloudletScheduler.isFinishedCloudlets();
+	}
+
+	public Cloudlet getNextFinishedCloudlet() {
+		return cloudletScheduler.getNextFinishedCloudlet();
+	}
+
 
 	/**
 	 * Requests updating of cloudlets' processing in VMs running in this host.
@@ -529,6 +557,9 @@ public class Host {
 	 */
 	protected <T extends Pe> void setPeList(List<T> peList) {
 		this.peList = peList;
+		mips = new ArrayList<>();
+		for(Pe p: peList)
+			mips.add((double)p.getMips());
 	}
 
 	/**

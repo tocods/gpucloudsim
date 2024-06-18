@@ -201,6 +201,7 @@ public class DatacenterBroker extends SimEntity {
 	 * @post $none
 	 */
 	protected void processResourceCharacteristicsRequest(SimEvent ev) {
+		Log.printLine("000000");
 		setDatacenterIdsList(CloudSim.getCloudResourceList());
 		setDatacenterCharacteristicsList(new HashMap<Integer, DatacenterCharacteristics>());
 

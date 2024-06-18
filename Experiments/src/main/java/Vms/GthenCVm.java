@@ -4,10 +4,9 @@ import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.CloudletScheduler;
 import org.cloudbus.cloudsim.DatacenterBroker;
 import org.cloudbus.cloudsim.Vm;
-import org.cloudbus.cloudsim.gpu.GpuCloudlet;
-import org.cloudbus.cloudsim.gpu.GpuDatacenter;
-import org.cloudbus.cloudsim.gpu.GpuDatacenterBroker;
-import org.cloudbus.cloudsim.gpu.GpuVm;
+import gpu.GpuCloudlet;
+import gpu.GpuDatacenterBroker;
+import gpu.GpuVm;
 
 import java.util.List;
 

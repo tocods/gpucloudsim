@@ -16,9 +16,8 @@
 package api.util;
 
 
-import org.cloudbus.cloudsim.Host;
-import org.cloudbus.cloudsim.gpu.GpuCloudlet;
-import org.cloudbus.cloudsim.gpu.power.PowerGpuHost;
+import gpu.GpuCloudlet;
+import gpu.power.PowerGpuHost;
 
 import java.io.File;
 import java.util.List;

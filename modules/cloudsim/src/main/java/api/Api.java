@@ -2,10 +2,9 @@ package api;
 
 import api.service.Service;
 import api.util.ParseUtil;
-import org.cloudbus.cloudsim.Host;
 import org.cloudbus.cloudsim.ParameterException;
-import org.cloudbus.cloudsim.gpu.GpuCloudlet;
-import org.cloudbus.cloudsim.gpu.power.PowerGpuHost;
+import gpu.GpuCloudlet;
+import gpu.power.PowerGpuHost;
 
 import java.io.File;
 import java.util.ArrayList;
